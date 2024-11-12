@@ -3,9 +3,12 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    
     Rigidbody movimientos;
     private Vector2 inputMovimiento;
     public float velocidad;
+    [SerializeField] private GameObject Prefab;
+
     private void Awake()
     {
         movimientos = GetComponent<Rigidbody>();
@@ -18,5 +21,12 @@ public class Player : MonoBehaviour
     {
         movimientos.velocity=new Vector3 (inputMovimiento.x*velocidad,movimientos.velocity.y,inputMovimiento.y*velocidad);
     }
-
+    public void Disparar(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameObject go= Instantiate(Prefab,transform.position, transform.rotation);
+            go.GetComponent<Bullet>().GenerarBala(inputMovimiento);
+        }
+    }
 }
