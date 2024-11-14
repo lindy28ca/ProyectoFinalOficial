@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 positionToMove;
+    public float speedMove;
+
+    private void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(transform.position, positionToMove, speedMove * Time.deltaTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+
+        if (other.gameObject.tag=="Node")
+        {
+            SetNewPosition(other.GetComponent<NodeControl>().GetAdjacentNode().transform.position);
+        }
+    }
+    public void SetNewPosition(Vector3 newPosition)
+    {
+        positionToMove = newPosition;
     }
 }
