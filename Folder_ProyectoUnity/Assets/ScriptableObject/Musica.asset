@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdb2f5592e0ea142809371e02a46cb8, type: 3}
+  m_Name: Musica
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 53641c35da5b4b64db24e7198d6a7456, type: 2}
+  groupMixer: {fileID: -1734082035126380412, guid: 53641c35da5b4b64db24e7198d6a7456,
+    type: 2}
+  volumeKey: Musica
+  volumeValue: 0.5
