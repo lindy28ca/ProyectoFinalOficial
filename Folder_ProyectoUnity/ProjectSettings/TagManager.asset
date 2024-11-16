@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Node
+  - Bala
+  - Ganaste
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 

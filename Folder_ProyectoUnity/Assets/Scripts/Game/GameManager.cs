@@ -3,18 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+
     private void Start()
     {
         Reanudar();
@@ -30,5 +19,24 @@ public class GameManager : MonoBehaviour
     public void CargarScena(string scena)
     {
         SceneManager.LoadScene(scena);
+    }
+    public void Perdiste()
+    {
+
+    }
+    public void Ganaste()
+    {
+        Time.timeScale = 0;
+        print("Ganaste");
+    }
+    private void OnEnable()
+    {
+        Player.Ganar += Ganaste;
+        Player.Perder += Perdiste;
+    }
+    private void OnDisable()
+    {
+        Player.Ganar -= Ganaste;
+        Player.Perder -= Perdiste;
     }
 }
