@@ -7,26 +7,47 @@ public class Enemy : MonoBehaviour
     public float speedMove;
     public int vida;
     private NavMeshAgent agentito;
-    public GameObject PrefabBala; 
+    public GameObject PrefabBala;
     [SerializeField] private float tiempoDisparo = 2f; 
     private float tiempoUltimoDisparo = 0f;
+
+    private Transform jugador; 
+    [SerializeField] private float rangoDeteccion = 10f;
 
     private void Awake()
     {
         agentito = GetComponent<NavMeshAgent>();
     }
+
     private void Update()
     {
-        agentito.destination = positionToMove;
+        if (jugador != null)
+        {
+            float distanciaJugador = Vector3.Distance(transform.position, jugador.position);
+
+            if (distanciaJugador <= rangoDeteccion)
+            {
+                agentito.destination = jugador.position;
+
+                if (Time.time - tiempoUltimoDisparo >= tiempoDisparo)
+                {
+                    Disparar(jugador.position);
+                    tiempoUltimoDisparo = Time.time;
+                }
+            }
+            else
+            {
+                agentito.destination = positionToMove;
+            }
+        }
+        else
+        {
+            agentito.destination = positionToMove;
+        }
+
         if (vida <= 0)
         {
             Destroy(gameObject);
-        }
-
-        if (Time.time >= tiempoUltimoDisparo + tiempoDisparo)
-        {
-            Disparar();
-            tiempoUltimoDisparo = Time.time;
         }
     }
 
@@ -41,6 +62,19 @@ public class Enemy : MonoBehaviour
         {
             --vida;
         }
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            jugador = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            jugador = null;
+        }
     }
 
     public void SetNewPosition(Vector3 newPosition)
@@ -48,11 +82,11 @@ public class Enemy : MonoBehaviour
         positionToMove = newPosition;
     }
 
-    private void Disparar()
+    private void Disparar(Vector3 targetPosition)
     {
         GameObject bala = Instantiate(PrefabBala, transform.position, Quaternion.identity);
 
-        Vector3 direccionDisparo = (positionToMove - transform.position).normalized;
+        Vector3 direccionDisparo = (targetPosition - transform.position).normalized;
 
         bala.GetComponent<Bullet>().GenerarBala(new Vector2(direccionDisparo.x, direccionDisparo.z));
     }

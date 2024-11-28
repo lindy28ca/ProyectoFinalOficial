@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,10 @@ public class GameManager : MonoBehaviour
     }
     public void Perdiste()
     {
+        Time.timeScale = 0;
+        print("perdiste");
+
+
 
     }
     public void Ganaste()
@@ -33,10 +38,12 @@ public class GameManager : MonoBehaviour
     {
         Player.Ganar += Ganaste;
         Player.Perder += Perdiste;
+        Temporizador.Perder += Perdiste;
     }
     private void OnDisable()
     {
         Player.Ganar -= Ganaste;
         Player.Perder -= Perdiste;
+        Temporizador.Perder -= Perdiste;
     }
 }
