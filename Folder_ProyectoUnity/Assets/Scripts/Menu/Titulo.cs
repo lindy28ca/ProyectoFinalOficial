@@ -1,14 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
-public class Centro : MonoBehaviour
+public class Titulo : MonoBehaviour
 {
     public Ease curva;
     public float velocidad;
+    public RectTransform position;
     RectTransform rectTransform;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
 
-        rectTransform.DOAnchorPos(Vector2.zero,velocidad).SetEase(curva);
+        rectTransform.DOAnchorPos(position.position,velocidad).SetEase(curva);
     }
 }
