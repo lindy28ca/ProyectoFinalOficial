@@ -83,7 +83,7 @@
                 {
                     "name": "",
                     "id": "49a8a5cb-e493-47bb-81ac-d2b03cc5d522",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Computadora",

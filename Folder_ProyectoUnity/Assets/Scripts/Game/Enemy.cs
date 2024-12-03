@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     private Transform jugador; 
     [SerializeField] private float rangoDeteccion = 10f;
-
+    public static event Action muerto;
     private void Awake()
     {
         agentito = GetComponent<NavMeshAgent>();
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bala"))
         {
             --vida;
+            Debug.Log("Me disparaste");
         }
 
         if (other.gameObject.CompareTag("Player"))
@@ -89,5 +91,9 @@ public class Enemy : MonoBehaviour
         Vector3 direccionDisparo = (targetPosition - transform.position).normalized;
 
         bala.GetComponent<Bullet>().GenerarBala(new Vector2(direccionDisparo.x, direccionDisparo.z));
+    }
+    private void OnDestroy()
+    {
+        muerto?.Invoke();
     }
 }

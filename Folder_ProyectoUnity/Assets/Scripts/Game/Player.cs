@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 using System;
+using System.Collections;
+using Unity.Mathematics;
 public class Player : MonoBehaviour
 {
     Rigidbody movimientos;
@@ -14,9 +15,20 @@ public class Player : MonoBehaviour
     private float tiempoUltimoDisparo; 
     public int vida;
 
+    public float aceleracion;
+    public float aceleracioninicial;
+    private bool mRUV;
+
     public static event Action Ganar;
     public static event Action Perder;
 
+    public float minX;
+    public float maxX;
+    private float currentX;
+
+    public float minZ;
+    public float maxZ;
+    private float currentZ;
     private void Awake()
     {
         movimientos = GetComponent<Rigidbody>();
@@ -30,6 +42,19 @@ public class Player : MonoBehaviour
         {
             Perder?.Invoke();
         }
+        currentX=math.clamp(transform.position.x,minX,maxX);
+        currentZ=math.clamp(transform.position.z,minZ,maxZ);
+        transform.position=new Vector3(currentX,transform.position.y, currentZ);
+        if(mRUV)
+        {
+            aceleracioninicial += Time.deltaTime;
+        }
+        else
+        {
+            aceleracioninicial -= Time.deltaTime;
+        }
+        aceleracioninicial = math.clamp(aceleracioninicial, 1, aceleracion);
+
     }
 
     public void InputMovimiento(InputAction.CallbackContext context)
@@ -43,7 +68,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movimientos.velocity = new Vector3(inputMovimiento.x * velocidad, movimientos.velocity.y, inputMovimiento.y * velocidad);
+        movimientos.velocity = new Vector3(inputMovimiento.x * velocidad*aceleracioninicial, movimientos.velocity.y, inputMovimiento.y * velocidad*aceleracioninicial);
     }
 
     public void Disparar(InputAction.CallbackContext context)
@@ -57,11 +82,36 @@ public class Player : MonoBehaviour
             tiempoUltimoDisparo = tiempoOficial;
         }
     }
+    private void MRUV(float tiempo)
+    {
+        StartCoroutine(TiempoMRUV(tiempo));
+    }
+    private IEnumerator TiempoMRUV(float tiempo)
+    {
+        mRUV = true;
+        yield return new WaitForSeconds(tiempo);
+        mRUV = false;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ganaste")
         {
             Ganar?.Invoke();
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag=="BulleEnemy")
+        {
+            --vida;
+        }
+    }
+    private void OnEnable()
+    {
+        PoderVelocidad.powerUp += MRUV;
+    }
+    private void OnDisable()
+    {
+        PoderVelocidad.powerUp -= MRUV;
     }
 }

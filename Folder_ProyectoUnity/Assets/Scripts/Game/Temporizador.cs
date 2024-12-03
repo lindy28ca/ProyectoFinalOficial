@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System;
-
 public class Temporizador : MonoBehaviour
 {
     TMP_Text text;
@@ -21,5 +20,20 @@ public class Temporizador : MonoBehaviour
         {
             Perder?.Invoke();
         }
+    }
+
+    private void AumentarTimepo(float tiempo)
+    {
+        this.tiempo += tiempo;
+    }
+
+    private void OnEnable()
+    {
+        AumentarTiempo.aumentarTiempo += AumentarTimepo;
+    }
+
+    private void OnDisable()
+    {
+        AumentarTiempo.aumentarTiempo -= AumentarTimepo;
     }
 }
