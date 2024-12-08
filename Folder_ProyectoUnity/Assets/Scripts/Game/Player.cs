@@ -10,9 +10,10 @@ public class Player : MonoBehaviour
     private Vector2 ultimoMovimiento;
     public float velocidad;
     public GameObject Prefab;
+    public AudioSource SoundbBala;
     public float TiempoDisparo = 1f;
-    private float tiempoOficial; 
-    private float tiempoUltimoDisparo; 
+    private float tiempoOficial;
+    private float tiempoUltimoDisparo;
     public int vida;
 
     public float aceleracion;
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
         {
             Perder?.Invoke();
         }
-        if(mRUV)
+        if (mRUV)
         {
             aceleracioninicial += Time.deltaTime;
         }
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movimientos.velocity = new Vector3(inputMovimiento.x * velocidad*aceleracioninicial, movimientos.velocity.y, inputMovimiento.y * velocidad*aceleracioninicial);
+        movimientos.velocity = new Vector3(inputMovimiento.x * velocidad * aceleracioninicial, movimientos.velocity.y, inputMovimiento.y * velocidad * aceleracioninicial);
     }
 
     public void Disparar(InputAction.CallbackContext context)
@@ -68,7 +69,7 @@ public class Player : MonoBehaviour
             GameObject go = Instantiate(Prefab, transform.position, transform.rotation);
 
             go.GetComponent<Bullet>().GenerarBala(ultimoMovimiento);
-
+            SoundbBala.Play();
             tiempoUltimoDisparo = tiempoOficial;
         }
     }
@@ -91,7 +92,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag=="BalaEnemy")
+        if (other.gameObject.tag == "BalaEnemy")
         {
             --vida;
         }

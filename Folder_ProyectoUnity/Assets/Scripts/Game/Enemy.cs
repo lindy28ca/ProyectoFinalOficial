@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     public float speedMove;
     public int vida;
     private NavMeshAgent agentito;
+    public Animator anim;
     public GameObject PrefabBala;
-    [SerializeField] private float tiempoDisparo = 2f; 
+    public AudioSource SoundbBala;
+    [SerializeField] private float tiempoDisparo = 2f;
     private float tiempoUltimoDisparo = 0f;
 
-    private Transform jugador; 
+    private Transform jugador;
     [SerializeField] private float rangoDeteccion = 10f;
     public static event Action muerto;
     private void Awake()
@@ -29,7 +31,7 @@ public class Enemy : MonoBehaviour
             if (distanciaJugador <= rangoDeteccion)
             {
                 agentito.destination = jugador.position;
-
+                anim.SetInteger("Speed", (int)agentito.speed);
                 if (Time.time - tiempoUltimoDisparo >= tiempoDisparo)
                 {
                     Disparar(jugador.position);
@@ -89,7 +91,7 @@ public class Enemy : MonoBehaviour
         GameObject bala = Instantiate(PrefabBala, transform.position, Quaternion.identity);
 
         Vector3 direccionDisparo = (targetPosition - transform.position).normalized;
-
+        SoundbBala.Play();
         bala.GetComponent<Bullet>().GenerarBala(new Vector2(direccionDisparo.x, direccionDisparo.z));
     }
     private void OnDestroy()

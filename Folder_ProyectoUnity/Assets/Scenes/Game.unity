@@ -919,8 +919,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 20
   vida: 1
+  anim: {fileID: 0}
   PrefabBala: {fileID: 2243337463989687263, guid: fbf68fbad86c45c4d855c79a88dc5219,
     type: 3}
+  SoundbBala: {fileID: 0}
   tiempoDisparo: 2
   rangoDeteccion: 10
 --- !u!136 &262132288
@@ -1252,8 +1254,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 20
   vida: 1
+  anim: {fileID: 0}
   PrefabBala: {fileID: 2243337463989687263, guid: fbf68fbad86c45c4d855c79a88dc5219,
     type: 3}
+  SoundbBala: {fileID: 0}
   tiempoDisparo: 2
   rangoDeteccion: 10
 --- !u!136 &318783583
@@ -1910,8 +1914,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 20
   vida: 1
+  anim: {fileID: 0}
   PrefabBala: {fileID: 2243337463989687263, guid: fbf68fbad86c45c4d855c79a88dc5219,
     type: 3}
+  SoundbBala: {fileID: 0}
   tiempoDisparo: 2
   rangoDeteccion: 10
 --- !u!136 &396543776
@@ -3857,7 +3863,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f427554eaeb1a448bbd0acb9eb786fd, type: 2}
+  - {fileID: 2100000, guid: 0bb634a128ad74b4facc437615d015d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5245,6 +5251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 7
   Prefab: {fileID: 2243337463989687263, guid: c7d6ba6c341c67848b02ab5498946815, type: 3}
+  SoundbBala: {fileID: 0}
   TiempoDisparo: 2
   vida: 5
   aceleracion: 3
@@ -7549,8 +7556,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 20
   vida: 1
+  anim: {fileID: 0}
   PrefabBala: {fileID: 2243337463989687263, guid: fbf68fbad86c45c4d855c79a88dc5219,
     type: 3}
+  SoundbBala: {fileID: 0}
   tiempoDisparo: 2
   rangoDeteccion: 10
 --- !u!135 &1797747279
