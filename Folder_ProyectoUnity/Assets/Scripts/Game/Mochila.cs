@@ -11,11 +11,10 @@ public class Mochila : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Objetos")
+        if(other.gameObject.tag=="Llave")
         {
             listaSimple.InsertAtEnd(other.gameObject.name);
             Destroy(other.gameObject);  
         }
     }
-    
 }

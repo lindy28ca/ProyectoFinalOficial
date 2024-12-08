@@ -1,10 +1,10 @@
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    public GameObject perdiste;
+    public GameObject ganaste;
     private void Start()
     {
         Reanudar();
@@ -23,16 +23,14 @@ public class GameManager : MonoBehaviour
     }
     public void Perdiste()
     {
-        Time.timeScale = 0;
-        print("perdiste");
-
-
+        perdiste.SetActive(true);
+        Pausa();
 
     }
     public void Ganaste()
     {
-        Time.timeScale = 0;
-        print("Ganaste");
+        ganaste.SetActive(true);
+        Pausa();
     }
     private void OnEnable()
     {

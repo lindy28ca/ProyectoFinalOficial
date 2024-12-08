@@ -38,7 +38,7 @@ public class Puerta : MonoBehaviour
     {
         for(int i = 0; i < lista.ObtenerValor(); ++i)
         {
-            if (this == lista.GetAtPosition(1))
+            if (this == lista.GetAtPosition(i))
             {
                 Destroy(this.gameObject);
             }

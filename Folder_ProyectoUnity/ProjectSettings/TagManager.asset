@@ -9,6 +9,8 @@ TagManager:
   - Ganaste
   - BalaEnemy
   - PowerUp
+  - Llave
+  - Laberinto
   layers:
   - Default
   - TransparentFX

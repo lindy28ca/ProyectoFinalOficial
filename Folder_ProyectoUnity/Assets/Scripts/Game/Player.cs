@@ -22,13 +22,6 @@ public class Player : MonoBehaviour
     public static event Action Ganar;
     public static event Action Perder;
 
-    public float minX;
-    public float maxX;
-    private float currentX;
-
-    public float minZ;
-    public float maxZ;
-    private float currentZ;
     private void Awake()
     {
         movimientos = GetComponent<Rigidbody>();
@@ -42,9 +35,6 @@ public class Player : MonoBehaviour
         {
             Perder?.Invoke();
         }
-        currentX=math.clamp(transform.position.x,minX,maxX);
-        currentZ=math.clamp(transform.position.z,minZ,maxZ);
-        transform.position=new Vector3(currentX,transform.position.y, currentZ);
         if(mRUV)
         {
             aceleracioninicial += Time.deltaTime;
@@ -101,7 +91,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag=="BulleEnemy")
+        if (other.gameObject.tag=="BalaEnemy")
         {
             --vida;
         }
