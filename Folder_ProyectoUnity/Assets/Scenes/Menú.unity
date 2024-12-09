@@ -2748,7 +2748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -302.715, y: 355.071}
+  m_AnchoredPosition: {x: -433, y: 355.071}
   m_SizeDelta: {x: 102.529, y: 25.632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1021472403
@@ -2982,6 +2982,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c03947fcd00bb4cb9e92c8cdc7ad74, type: 3}
+--- !u!1 &1198925515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198925517}
+  - component: {fileID: 1198925516}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1198925516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198925515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7adc97753dc1140b583c318d597657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1198925517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198925515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 218.79402, y: 34.974575, z: 396.4446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207605512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,7 +4056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -415.17, y: -133}
+  m_AnchoredPosition: {x: -415.17, y: -157}
   m_SizeDelta: {x: 114.14, y: 28.534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485830096
@@ -5099,10 +5143,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 582534988613639498, guid: a60edeb46436ba44582d5d6bfb43eb6d,
-          type: 3}
-        m_TargetAssemblyTypeName: CambioScene, Assembly-CSharp
-        m_MethodName: SalirDelJuego
+      - m_Target: {fileID: 1198925516}
+        m_TargetAssemblyTypeName: salir, Assembly-CSharp
+        m_MethodName: sal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5231,3 +5274,4 @@ SceneRoots:
   - {fileID: 1116406902}
   - {fileID: 1723773662}
   - {fileID: 632161900}
+  - {fileID: 1198925517}
